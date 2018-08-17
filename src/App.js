@@ -13,12 +13,16 @@ class App extends Component {
       newData: ''
     };
 
+    this.dataRef = null;
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    database.ref().on('value', (snapshot) => {
+    this.dataRef = database.ref('/Ahmed');
+
+    this.dataRef.on('value', (snapshot) => {
       this.setState({
         data: snapshot.val()
       })
@@ -27,8 +31,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    database.ref('/Ahmed')
-            .push(this.state.newData);
+    this.dataRef.push(this.state.newData);
   }
 
   handleChange(event) {
