@@ -27,7 +27,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    database.ref('/wewewe/lololo')
+    database.ref('/Ahmed')
             .push(this.state.newData);
   }
 
